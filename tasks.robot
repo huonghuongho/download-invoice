@@ -18,7 +18,7 @@ ${FILENAME}=    Invoice
 
 *** Tasks ***
 Open the robot order website
-    Set Download Directory    /HuongHNU/HOA DON/Download    
+    Set Download Directory    /HuongHNU/HOA DON/Download    // cái ni nếu mình clone về thì máy mình có chạy được không ?
     Open Available Browser    url=https://www.meinvoice.vn/tra-cuu/
 Enter code
     Input Text    //input[@id="txtCode"]    3PTWUJJ3XGB
@@ -27,17 +27,17 @@ Enter code
      
 
 Download Invoice  
-    Set Download Directory    /HuongHNU/HOA DON/Download    
+    Set Download Directory    /HuongHNU/HOA DON/Download    // vì răng trên kia set rồi mà răng dưới ni lại lòi ra dòng ni nữa ?
     Click Element    //div[@class="res-btn download"]
     Wait Until Element Is Visible    //div[@class="dm-item xml txt-download-xml"]
     Click Element    //div[@class="dm-item xml txt-download-xml"]    
 
 Wait For Download To Complete
-    Wait Until Keyword Succeeds    5 sec    10 sec    ${FILENAME}
+    Wait Until Keyword Succeeds    5 sec    10 sec    ${FILENAME}    // bạn có chắc là hàm ni hắn chạy được không ?
 
 
 Read XML 
-    ${XML}=    Open File    /HuongHNU/HOA DON/Download/1C23TTT_00002034.xml
+    ${XML}=    Open File    /HuongHNU/HOA DON/Download/1C23TTT_00002034.xml    // bạn tải nhiều hóa đơn mà bạn gán cứng tên file rồi đến lúc tải nhiều mã khác nhau thì tên file đó có tồn tại để xử lý không ?
     ${xml}=    Parse Xml    /HuongHNU/HOA DON/Download/1C23TTT_00002034.xml
     ${Ma_code}=    Get Elements Texts    ${XML}    DLHDon/Id
     ${KHHDon}=    Get Elements Texts    ${XML}    DLHDon/TTChung/KHHDon
